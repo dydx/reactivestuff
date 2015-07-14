@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reactive Stuff</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0 auto;
+      padding: 1em;
+    }
+
+    .container {
+      width: 60%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Suggested Users</div>
+      <ul id="users" class="list-group">
+        <li class="user-1 list-group-item"></li>
+        <li class="user-2 list-group-item"></li>
+        <li class="user-3 list-group-item"></li>
+      </ul>
+      <div class="panel-footer text-center"><a href="#" class="refresh">Refresh</a></div>
+    </div>
+  </div>
+  <script src="dist/bundle.js"></script>
+</body>
+</html>
