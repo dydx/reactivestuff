@@ -1,5 +1,7 @@
 # reactive stuff
-messing around with RxJS
+A simple "Suggested User" thing for GitHub
+
+![Screenshot](thing.png)
 
 ## browserify
 
