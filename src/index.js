@@ -13,6 +13,24 @@ function getJSON(response) {
   return response.json();
 };
 
+// a simple template sorta thing
+function generateSuggestionLink(user) {
+  // generate our nodes
+  var li  = document.createElement('li');
+  var img = document.createElement('img');
+  var a   = document.createElement('a');
+  // set our attributes
+  li.setAttribute('class', 'list-group-item');
+  img.setAttribute('src', user.avatar_url);
+  a.setAttribute('href', user.url);
+  a.textContent = user.login;
+  // try this crap out
+  li.appendChild(img);
+  li.appendChild(a);
+  // return that badboy
+  return li;
+}
+
 var refreshButton = document.querySelector('.refresh');
 var refreshClickStream = Rx.Observable.fromEvent(refreshButton, 'click');
 
@@ -29,9 +47,11 @@ var responseStream = requestStream
       .then(checkStatus)
       .then(getJSON)
       .then(function(data) {
+        console.log(data);
         return data;
       })
       .catch(function(err) {
+        console.log(err);
         return err;
       }));
   });
@@ -61,13 +81,13 @@ var suggestion3Stream = responseStream
 // I'd like to be able to combine those other three streams
 // into one subscribable stream interface, and just map over it
 suggestion1Stream.subscribe(function(suggestion) {
-  document.querySelector('.user-1').textContent = suggestion.login;
+  document.querySelector('#users').appendChild(generateSuggestionLink(suggestion));
 });
 
 suggestion2Stream.subscribe(function(suggestion) {
-  document.querySelector('.user-2').textContent = suggestion.login;
+  document.querySelector('#users').appendChild(generateSuggestionLink(suggestion));
 });
 
 suggestion3Stream.subscribe(function(suggestion) {
-  document.querySelector('.user-3').textContent = suggestion.login;
+  document.querySelector('#users').appendChild(generateSuggestionLink(suggestion));
 });
