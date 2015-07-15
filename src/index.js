@@ -22,6 +22,7 @@ function generateSuggestionLink(user) {
   // set our attributes
   li.setAttribute('class', 'list-group-item');
   img.setAttribute('src', user.avatar_url);
+  img.setAttribute('width', '25px');
   a.setAttribute('href', user.url);
   a.textContent = user.login;
   // try this crap out
